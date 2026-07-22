@@ -4,6 +4,7 @@ import User from './component/user'
 import Admin from './component/admin'
 import CityMaster from './component/cityMaster'
 import DataEventBinding from './component/DataEventBinding'
+import UseState from './component/useHookState'
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <Admin />
       <CityMaster /> */}
       <DataEventBinding />
+      <UseState />
       
     
     </>
