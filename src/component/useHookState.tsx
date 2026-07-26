@@ -15,6 +15,8 @@ function UseState(){
 
   const [productPrice,setProductPrice]=useState<number>(1200);
 
+  const [isActive,setIsActive]=useState<boolean>(false);
+
 
 
   const changeProductPrice=(event:any)=>{
@@ -36,6 +38,14 @@ function UseState(){
     setCourseVideoLength("10");
   }
 
+
+const onActiveChange=(event:any)=>{
+
+  setIsActive(event.target.checked);
+
+}
+
+
   return <div>
         <p>{courseName}</p>
         <p>{courseVideoLength}</p>
@@ -44,6 +54,10 @@ function UseState(){
         <br />
         <p>Product Price: {productPrice}</p>
         <input type="text" onChange={(event)=>changeProductPrice(event)} />
+        <br/>
+        <p>Is Active:{isActive? 'checked':'unchecked'}</p>
+        <br/>
+        <input type="checkbox" onChange={(event)=>onActiveChange(event)}  />
 
 
         
