@@ -17,6 +17,9 @@ function UseState(){
 
   const [isActive,setIsActive]=useState<boolean>(false);
 
+  const [cityList,setCityList]=useState<string[]>(["Pune","Mumbai","Delhi"]);
+
+  const [cityName,setCityName]=useState<string>("");
 
 
   const changeProductPrice=(event:any)=>{
@@ -45,9 +48,29 @@ const onActiveChange=(event:any)=>{
 
 }
 
+   const onCityNameChnage=(event:any)=>{
+  setCityName(event.target.value);
+  
+}
+
+
+  const addCity=()=>{
+
+
+    setCityList(oldCityList => [...oldCityList,cityName]);
+
+
+
+  }
+
+
 
   return <div>
         <p>{courseName}</p>
+        <br/>
+        <input type="text" onChange={(eve)=>(onCityNameChnage(eve))} placeholder="Enter city name" />
+        <button onClick={addCity}>Add City</button>
+        <p>City List:{cityList}</p>
         <p>{courseVideoLength}</p>
         <button onClick={changeCourse}>Chnage course name</button>
         <button onClick={changeCourseVideoLength}>Change video length</button>
