@@ -21,6 +21,8 @@ function UseState(){
 
   const [cityName,setCityName]=useState<string>("");
 
+const [student,setStudent]=useState<IsStudent>({name:"Ramesh",city:"Pune",isActive:true});
+
 
   const changeProductPrice=(event:any)=>{
 
@@ -63,13 +65,35 @@ const onActiveChange=(event:any)=>{
 
   }
 
+  const addMPCity=()=>{
+
+    setCityList(["Bhopal","Indore","Gwalior"]);
+  }
+
+
+  const onChnageName=(event:any)=>{
+    setStudent(oldData=>({...oldData,name:event.target.value}));
+  }
+
+  const onChnageCity=(event:any)=>{
+    setStudent(oldData=>({...oldData,city:event.target.value}));
+  }
 
 
   return <div>
         <p>{courseName}</p>
         <br/>
+        <input type="text" onChange={(eve)=>(onChnageName(eve))} placeholder="Name" />
+
+        <input type="text" onChange={(eve)=>(onChnageCity(eve))} placeholder="City" />
+
+
+
+        <p>{student.name}--{student.city}</p>
+
         <input type="text" onChange={(eve)=>(onCityNameChnage(eve))} placeholder="Enter city name" />
         <button onClick={addCity}>Add City</button>
+        <button onClick={addMPCity}>Add MP City</button>
         <p>City List:{cityList}</p>
         <p>{courseVideoLength}</p>
         <button onClick={changeCourse}>Chnage course name</button>
@@ -92,3 +116,9 @@ const onActiveChange=(event:any)=>{
 }
 
 export default UseState;
+
+interface IsStudent{
+  name:string;
+  city:string;
+  isActive?:boolean;
+}
