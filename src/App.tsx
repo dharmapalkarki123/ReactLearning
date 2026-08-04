@@ -1,7 +1,5 @@
 
 import './App.css'
-import DataEventBinding from './component/DataEventBinding'
-import UseState from './component/useHookState'
 import UseEffectEx from './component/useEffectEx'
 
 
