@@ -1,5 +1,6 @@
 
 import './App.css'
+import ConditionRender from './component/ConditionRender'
 import UseEffectEx from './component/useEffectEx'
 
 
@@ -17,7 +18,9 @@ function App() {
       <CityMaster /> */}
       {/* <DataEventBinding />
       <UseState /> */}
-      <UseEffectEx />
+      {/* <UseEffectEx /> */}
+
+      <ConditionRender />
      
       
       

@@ -25,6 +25,12 @@ function UseEffectEx(){
 
   },[courseVideoLength]);
 
+
+  useEffect(()=>{
+    console.log("UseEffect with dependency on both");
+
+  },[courseName,courseVideoLength]);
+
   const changeCourseName=()=>{
 
    setCourseName("React JS");
