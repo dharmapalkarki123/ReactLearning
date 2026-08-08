@@ -1,6 +1,7 @@
 
 import './App.css'
 import ConditionRender from './component/ConditionRender'
+import ListEx from './component/ListEx'
 import UseEffectEx from './component/useEffectEx'
 
 
@@ -20,7 +21,9 @@ function App() {
       <UseState /> */}
       {/* <UseEffectEx /> */}
 
-      <ConditionRender />
+      {/* <ConditionRender /> */}
+
+      <ListEx />
      
       
       
