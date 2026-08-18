@@ -5,6 +5,8 @@ import ConditionRender from './component/ConditionRender'
 import ListEx from './component/ListEx'
 import UseEffectEx from './component/useEffectEx'
 import DataEventBinding from './component/DataEventBinding'
+import User from './component/user'
+
 
 
 function App() {
@@ -64,6 +66,8 @@ function App() {
          <Route path='/useEffect' element={<UseEffectEx/>}></Route>
           <Route path='/Condition-Render' element={<ConditionRender/>}></Route>
           <Route path='/List-Example' element={<ListEx/>}></Route>
+
+         <Route path='/user/:userId' element={<User/>}></Route>
 
 
       </Routes>
