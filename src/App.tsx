@@ -8,7 +8,6 @@ import DataEventBinding from './component/DataEventBinding'
 import User from './component/user'
 
 
-
 function App() {
  
 
@@ -66,8 +65,8 @@ function App() {
          <Route path='/useEffect' element={<UseEffectEx/>}></Route>
           <Route path='/Condition-Render' element={<ConditionRender/>}></Route>
           <Route path='/List-Example' element={<ListEx/>}></Route>
-
-         <Route path='/user/:userId' element={<User/>}></Route>
+          <Route path='/user/:userId' element={<User />}></Route>
+          <Route path='*' element={<h1>Page Not Found</h1>}></Route>
 
 
       </Routes>

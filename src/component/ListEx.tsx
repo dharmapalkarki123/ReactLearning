@@ -20,6 +20,8 @@ function ListEx(){
     navigate(-1);
    }
 
+   
+
   return <div>
     
     
@@ -30,8 +32,8 @@ function ListEx(){
         <br />
         <button onClick={goToPreviousPage}>Go To Previous Page</button>
          <br />
-        <button onClick={()=>navigate('user/1')}>User1</button>
-         <button onClick={()=>navigate('user/2')}>User2</button>
+        <button onClick={()=>navigate('/user/1')}>User 1</button>
+         <button onClick={()=>navigate('/user/2')}>User 2</button>
       </div>
       <div className="col-4">
         <ul>

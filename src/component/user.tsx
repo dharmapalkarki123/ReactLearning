@@ -1,11 +1,15 @@
+import { useParams } from "react-router";
+
 function User(){
 
+  const {userId}=useParams<{userId:string}>();
 
-  return <div>
-  
-  <h1>Hi, From User Page</h1>
 
-  </div>
+  return <>
+    <h1>Hello -<br />
+    user id={userId}
+    </h1>
+  </>
 
 }
 
