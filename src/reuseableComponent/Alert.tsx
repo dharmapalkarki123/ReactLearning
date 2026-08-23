@@ -1,17 +1,16 @@
 
-interface AltertModel{
+interface AlertModel{
   alertTitle:string;
   alertMessage:string;
   alertClassName:string;
 
 
 }
-
-function Altert(){
+function Alert(alertdata:AlertModel){
   return (
-  <div className="alert alert-success">
-  <strong>Success!</strong> Indicates a successful or positive action.
+  <div className={'alert'+alertdata.alertClassName} >
+  <strong>{alertdata.alertTitle}</strong> {alertdata.alertMessage}
 </div>
 );
 }
-export default Altert;
+export default Alert;
