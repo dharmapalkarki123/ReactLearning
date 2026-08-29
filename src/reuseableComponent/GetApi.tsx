@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 function GetApi(){
@@ -7,11 +8,14 @@ function GetApi(){
 
   const [vendorList,setVendorList]=useState<VendorModel[]>([]);
 
+  const [postUserList,setPostUserList]=useState<any>([]);
+
   useEffect(()=>{
     debugger
     getAllUsers();
 
     getAllVendors();
+    getAllPosts();
 
   },[])
 
@@ -34,9 +38,17 @@ function GetApi(){
 
 
   const getAllVendors=async()=>{
-    const response =await fetch("https://api.freeprojectapi.com/api/BusBooking/GetBusVendors");
-    const vendorList=await response.json();
+    const res =await fetch("https://api.freeprojectapi.com/api/BusBooking/GetBusVendors");
+    const vendorList=await res.json();
     setVendorList(vendorList);
+  }
+
+  const getAllPosts=async()=>{
+
+    const result = await axios.get("https://jsonplaceholder.typicode.com/posts")
+    setPostUserList(result.data);
+
+
   }
 
  return<div>
@@ -45,10 +57,11 @@ function GetApi(){
     <div className="col-6">
       <ul>
         {userList.map((user:UserModel)=>{
-          return<li>{user.name}-{user.email}</li>})
+          return<li>{user.username}-{user.email}</li>})
         }
       </ul>
     </div>
+   
     <div className="col-6">
       <table className="table table-bordered">
         <thead>
@@ -71,6 +84,14 @@ vendorList.map((vendor:VendorModel)=>{
         </tbody>
       </table>
     </div>
+
+ <div className="col-3">
+      <ul>
+        {postUserList.map((post:any)=>{
+          return<li>{post.title}</li>})}
+      </ul>
+    </div>
+
   </div>
 
  </div>
@@ -95,3 +116,4 @@ export interface VendorModel {
     contactNo: string,
     emailId: string
 }
+
