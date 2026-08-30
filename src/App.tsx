@@ -7,6 +7,7 @@ import UseEffectEx from './component/useEffectEx'
 import DataEventBinding from './component/DataEventBinding'
 import User from './component/user'
 import GetApi from './reuseableComponent/GetApi'
+import  PostApi from './reuseableComponent/PostApi'
 
 
 
@@ -45,8 +46,12 @@ function App() {
 </li>
 
                 
-                <li className="nav-item"> 
+   <li className="nav-item"> 
   <Link className="nav-link" to="/GetApi">Get</Link> 
+</li>
+
+ <li className="nav-item"> 
+  <Link className="nav-link" to="/PostApi">Post</Link> 
 </li>
 
 
@@ -84,6 +89,7 @@ function App() {
           <Route path='/user/:userId' element={<User />}></Route>
           <Route path='*' element={<h1>Page Not Found</h1>}></Route>
           <Route path='/GetApi' element={<GetApi />}></Route>
+          <Route path='/PostApi' element={<PostApi />}></Route>
 
 
       </Routes>
