@@ -4,10 +4,25 @@ import { useEffect, useState } from "react";
 function PostApi() {
 
   const [vendorList,setVendorList]=useState<VendorModel[]>([]);
+  const [vendorObj,setVendorObj]=useState<VendorModel>({
+    vendorId:0,
+    vendorName:"",
+    contactNo:"",
+    emailId:""
+  })
 
  useEffect(()=>{
- getAllVendors
+ getAllVendors()
  },[])
+
+
+ const updateVendorName=(event:any)=>{
+
+  setVendorObj(oldObj=>({...oldObj,vendorName:event.target.value}))
+
+
+
+ }
 
   const getAllVendors=async()=>{
     const result=await axios.get("https://api.freeprojectapi.com/api/BusBooking/GetBusVendors");
@@ -63,6 +78,7 @@ function PostApi() {
             <div className="card-header bg-warning text-dark fw-bold">
               Vendor Form
             </div>
+            vendorname-{vendorObj.vendorName}
             <div className="card-body">
               <form>
                 <div className="mb-3">
@@ -72,7 +88,7 @@ function PostApi() {
 
                 <div className="mb-3">
                   <label className="form-label">Vendor Name</label>
-                  <input type="text" className="form-control" placeholder="Enter vendor name" />
+                  <input type="text" className="form-control" onChange={(eve)=>updateVendorName(eve)} placeholder="Enter vendor name" />
                 </div>
 
                 <div className="mb-3">
