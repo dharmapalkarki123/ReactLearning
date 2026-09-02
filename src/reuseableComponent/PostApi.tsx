@@ -17,10 +17,30 @@ function PostApi() {
 
 
  const updateVendorName=(event:any)=>{
-
   setVendorObj(oldObj=>({...oldObj,vendorName:event.target.value}))
 
+ }
 
+ const postVendorData=async()=>{
+  debugger
+    const response=await axios.post("https://api.freeprojectapi.com/api/BusBooking/PostBusVendor", vendorObj)
+    debugger
+    if(response.status==201){
+      alert("Vendor added successfully")
+      getAllVendors();
+    }else{
+      alert("API failed to add vendor")
+    }
+
+ }
+
+  const updateVendorContactNo=(event:any)=>{
+  setVendorObj(oldObj=>({...oldObj,contactNo:event.target.value}))
+
+ }
+
+  const updateVendorForm=(event:any,key:string)=>{
+  setVendorObj(oldObj=>({...oldObj,[key]:event.target.value}))
 
  }
 
@@ -78,31 +98,26 @@ function PostApi() {
             <div className="card-header bg-warning text-dark fw-bold">
               Vendor Form
             </div>
-            vendorname-{vendorObj.vendorName}
+            vendorname-{vendorObj.vendorName} --MobileNo-{vendorObj.contactNo}EmailId-{vendorObj.emailId}
             <div className="card-body">
               <form>
-                <div className="mb-3">
-                  <label className="form-label">Vendor Id</label>
-                  <input type="number" className="form-control" placeholder="Enter vendor id" />
-                </div>
-
-                <div className="mb-3">
+              <div className="mb-3">
                   <label className="form-label">Vendor Name</label>
-                  <input type="text" className="form-control" onChange={(eve)=>updateVendorName(eve)} placeholder="Enter vendor name" />
+                  <input type="text" className="form-control" onChange={(eve)=>updateVendorForm(eve,'vendorName')} placeholder="Enter vendor name" />
                 </div>
 
                 <div className="mb-3">
                   <label className="form-label">Contact No</label>
-                  <input type="text" className="form-control" placeholder="Enter contact number" />
+                  <input type="text" className="form-control" onChange={(eve)=>updateVendorForm(eve,'contactNo')} placeholder="Enter contact number" />
                 </div>
 
                 <div className="mb-3">
                   <label className="form-label">Email Id</label>
-                  <input type="email" className="form-control" placeholder="Enter email id" />
+                  <input type="email" className="form-control" onChange={(eve)=>updateVendorForm(eve,'emailId')} placeholder="Enter email id" />
                 </div>
 
                 <div className="d-flex gap-2">
-                  <button type="submit" className="btn btn-success">
+                  <button type="button" onClick={postVendorData} className="btn btn-success">
                     Save
                   </button>
                   <button type="button" className="btn btn-secondary">
