@@ -15,6 +15,13 @@ function PostApi() {
  getAllVendors()
  },[])
 
+  const onEdit=(item:VendorModel)=>{
+
+    setVendorObj(item);
+
+
+
+  }
 
  const updateVendorName=(event:any)=>{
   setVendorObj(oldObj=>({...oldObj,vendorName:event.target.value}))
@@ -77,7 +84,7 @@ function PostApi() {
                         <td>{vendor.contactNo}</td>
                         <td>{vendor.emailId}</td>
                         <tr>
-                          <button type="button" className="btn btn-sm btn-primary me-2">
+                          <button type="button" className="btn btn-sm btn-primary me-2" onClick={()=>onEdit(vendor)}>
                         Edit
                       </button>
                       <button type="button" className="btn btn-sm btn-danger">
@@ -98,28 +105,37 @@ function PostApi() {
             <div className="card-header bg-warning text-dark fw-bold">
               Vendor Form
             </div>
-            vendorname-{vendorObj.vendorName} --MobileNo-{vendorObj.contactNo}EmailId-{vendorObj.emailId}
+            vendorId-{vendorObj.vendorId}  vendorname-{vendorObj.vendorName} --MobileNo-{vendorObj.contactNo}EmailId-{vendorObj.emailId}
             <div className="card-body">
               <form>
               <div className="mb-3">
                   <label className="form-label">Vendor Name</label>
-                  <input type="text" className="form-control" onChange={(eve)=>updateVendorForm(eve,'vendorName')} placeholder="Enter vendor name" />
+                  <input type="text" value={vendorObj.vendorName} className="form-control" onChange={(eve)=>updateVendorForm(eve,'vendorName')} placeholder="Enter vendor name" />
                 </div>
 
                 <div className="mb-3">
                   <label className="form-label">Contact No</label>
-                  <input type="text" className="form-control" onChange={(eve)=>updateVendorForm(eve,'contactNo')} placeholder="Enter contact number" />
+                  <input type="text" value={vendorObj.contactNo} className="form-control" onChange={(eve)=>updateVendorForm(eve,'contactNo')} placeholder="Enter contact number" />
                 </div>
 
                 <div className="mb-3">
                   <label className="form-label">Email Id</label>
-                  <input type="email" className="form-control" onChange={(eve)=>updateVendorForm(eve,'emailId')} placeholder="Enter email id" />
+                  <input type="email" value={vendorObj.emailId} className="form-control" onChange={(eve)=>updateVendorForm(eve,'emailId')} placeholder="Enter email id" />
                 </div>
 
                 <div className="d-flex gap-2">
-                  <button type="button" onClick={postVendorData} className="btn btn-success">
+
+                  {vendorObj.vendorId==0 && <button type="button" onClick={postVendorData} className="btn btn-warning">
                     Save
+
+                  </button> }
+                  {
+
+                    vendorObj.vendorId!=0 && <button type="button" onClick={postVendorData} className="btn btn-success">
+                    Update
                   </button>
+                  }
+                 
                   <button type="button" className="btn btn-secondary">
                     Clear
                   </button>
