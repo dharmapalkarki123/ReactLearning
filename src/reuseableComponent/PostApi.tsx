@@ -46,6 +46,49 @@ function PostApi() {
 
  }
 
+ const updateVedorBus=async()=>{
+const response=await axios.put("https://api.freeprojectapi.com/api/BusBooking/PutBusVendors?id=" +vendorObj.vendorId,vendorObj);
+
+   if(response.status==204)
+{
+    alert("Vendor updated successfully")
+    getAllVendors();
+}else{
+  alert("API failed to update vendor")
+}
+
+
+ 
+
+
+ }
+
+ const deleteVendor=async(id : number)=>{
+
+  try{
+
+    const confirmdelete= confirm("Are you sure to delete vendor?");
+    if(confirmdelete==true){
+
+        const response=await axios.delete("https://api.freeprojectapi.com/api/BusBooking/DeleteBusVendors?id=" +id);
+      if(response.status==204)
+  {
+      alert("Vendor deleted successfully")
+      getAllVendors();
+  }else{
+    alert("API failed to delete vendor")
+  }
+      
+    }
+   
+
+  }
+  catch(error){
+      alert("API failed to delete vendor" +error)
+  }
+
+ }
+
   const updateVendorForm=(event:any,key:string)=>{
   setVendorObj(oldObj=>({...oldObj,[key]:event.target.value}))
 
@@ -87,7 +130,7 @@ function PostApi() {
                           <button type="button" className="btn btn-sm btn-primary me-2" onClick={()=>onEdit(vendor)}>
                         Edit
                       </button>
-                      <button type="button" className="btn btn-sm btn-danger">
+                       <button type="button" className="btn btn-sm btn-danger me-2" onClick={()=>deleteVendor(vendor.vendorId)}>
                         Delete
                       </button>
                         </tr>
@@ -131,12 +174,12 @@ function PostApi() {
                   </button> }
                   {
 
-                    vendorObj.vendorId!=0 && <button type="button" onClick={postVendorData} className="btn btn-success">
+                    vendorObj.vendorId!=0 && <button type="button" onClick={updateVedorBus} className="btn btn-success">
                     Update
                   </button>
                   }
                  
-                  <button type="button" className="btn btn-secondary">
+                  <button type="button"  className="btn btn-secondary">
                     Clear
                   </button>
                 </div>
