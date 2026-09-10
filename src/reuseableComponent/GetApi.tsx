@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import  { VendorService } from "../service/VendorService";
+
+// const vendorService = new VendorService();
 
 function GetApi(){
 
@@ -33,6 +36,13 @@ function GetApi(){
 
   }
 
+  // const getAllUsers= async()=>{
+  //   debugger
+  // const result=await VendorService.getAllVendors();
+  // setVendorList(result);
+
+  
+  // }
 
   
 

@@ -1,5 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { VendorService } from "../service/VendorService";
+
+
+
+
+
 
 function PostApi() {
 
@@ -30,9 +36,10 @@ function PostApi() {
 
  const postVendorData=async()=>{
   debugger
-    const response=await axios.post("https://api.freeprojectapi.com/api/BusBooking/PostBusVendor", vendorObj)
-    debugger
-    if(response.status==201){
+    // const result=await axios.post("https://api.freeprojectapi.com/api/BusBooking/PostBusVendor", vendorObj)
+     const result=await VendorService.createNewVendor(vendorObj);
+    debugger;
+    if(result.status==201){
       alert("Vendor added successfully")
       getAllVendors();
     }else{
@@ -40,6 +47,25 @@ function PostApi() {
     }
 
  }
+
+
+
+    // const postVendorData=async()=>{
+
+    //   debugger
+    //   const response=await VendorService.createNewVendor(vendorObj);
+    //   debugger
+    // if(response.status==201){
+    //   alert("Vendor added successfully")
+    //   getAllVendors();
+    // }else{
+    //   alert("API failed to add vendor")
+    // }
+
+    // }
+
+
+
 
   const updateVendorContactNo=(event:any)=>{
   setVendorObj(oldObj=>({...oldObj,contactNo:event.target.value}))
@@ -95,8 +121,10 @@ const response=await axios.put("https://api.freeprojectapi.com/api/BusBooking/Pu
  }
 
   const getAllVendors=async()=>{
-    const result=await axios.get("https://api.freeprojectapi.com/api/BusBooking/GetBusVendors");
-    setVendorList(result.data);
+    debugger
+    // const result=await axios.get("https://api.freeprojectapi.com/api/BusBooking/GetBusVendors");
+    const result=await VendorService.getAllVendors();
+    setVendorList(result);
   }
 
 
