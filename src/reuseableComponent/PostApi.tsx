@@ -34,10 +34,11 @@ function PostApi() {
 
  }
 
- const postVendorData=async()=>{
+ const postnewVendorData=async()=>{
   debugger
     // const result=await axios.post("https://api.freeprojectapi.com/api/BusBooking/PostBusVendor", vendorObj)
-     const result=await VendorService.createNewVendor(vendorObj);
+     const result=await VendorService.createNewVendors(vendorObj);
+     console.log(result);
     debugger;
     if(result.status==201){
       alert("Vendor added successfully")
@@ -196,7 +197,7 @@ const response=await axios.put("https://api.freeprojectapi.com/api/BusBooking/Pu
 
                 <div className="d-flex gap-2">
 
-                  {vendorObj.vendorId==0 && <button type="button" onClick={postVendorData} className="btn btn-warning">
+                  {vendorObj.vendorId==0 && <button type="button" onClick={postnewVendorData} className="btn btn-warning">
                     Save
 
                   </button> }
