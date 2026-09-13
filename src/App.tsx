@@ -8,6 +8,7 @@ import DataEventBinding from './component/DataEventBinding'
 import User from './component/user'
 import GetApi from './reuseableComponent/GetApi'
 import  PostApi from './reuseableComponent/PostApi'
+import ZodFormValidation from './formValidation/zodFormValidation'
 
 
 
@@ -54,6 +55,10 @@ function App() {
   <Link className="nav-link" to="/PostApi">Post</Link> 
 </li>
 
+<li className="nav-item"> 
+  <Link className="nav-link" to="/Form">Form</Link> 
+</li>
+
 
 
   
@@ -90,6 +95,7 @@ function App() {
           <Route path='*' element={<h1>Page Not Found</h1>}></Route>
           <Route path='/GetApi' element={<GetApi />}></Route>
           <Route path='/PostApi' element={<PostApi />}></Route>
+          <Route path='/Form' element={<ZodFormValidation />}></Route>
 
 
       </Routes>
