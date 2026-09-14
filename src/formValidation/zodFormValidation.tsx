@@ -28,45 +28,47 @@ function zodFormValidation() {
     console.log(data);
   }
 
-  return <div>
-    <form onSubmit={handleSubmit(onSaveUser)}>
-          <div className="row">
-            <div className="col-4">
-              <label htmlFor="">Email</label>
-              <input type="text" className="form-control" {...register("email")}/>
+ return <div className="form-container">
+    <form onSubmit={handleSubmit(onSaveUser)} className="form-card">
 
-            </div>
+      <h2 className="form-title">Register User</h2>
 
+      <div className="form-group">
+        <label>Email</label>
+        <input
+          type="text"
+          className="form-input"
+          {...register("email")}
+        />
+        {errors.email && <p className="error">{errors.email.message}</p>}
+      </div>
 
-             <div className="col-4">
-              <label htmlFor="">User Name</label>
-              <input type="text" className="form-control" {...register("username")}/>
+      <div className="form-group">
+        <label>User Name</label>
+        <input
+          type="text"
+          className="form-input"
+          {...register("username")}
+        />
+        {errors.username && <p className="error">{errors.username.message}</p>}
+      </div>
 
-            </div>
+      <div className="form-group">
+        <label>Mobile Number</label>
+        <input
+          type="text"
+          className="form-input"
+          {...register("mobile")}
+        />
+        {errors.mobile && <p className="error">{errors.mobile.message}</p>}
+      </div>
 
-
-            <div className="col-4">
-              <label htmlFor="">Mobile Number</label>
-              <input type="text" className="form-control" {...register("mobile")}/>
-
-            </div>
-
-
-
-
-
-          </div>
-
-    
-      <button type="submit" >Save Users</button>
+      <button type="submit" className="submit-btn">
+        Save User
+      </button>
 
     </form>
-
-  
   </div>
 
-
-
 }
-
 export default zodFormValidation;
