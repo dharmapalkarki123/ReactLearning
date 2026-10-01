@@ -7,17 +7,7 @@ export const VendorService={
 
  
 
-  //  getAllVendors: async () => {
-  //   debugger
-  //   const result = await axios.get("https://api.freeprojectapi.com/api/BusBooking/GetBusVendors");
-  //   return result.data;
-  // },
 
-  // createNewVendors: async (obj: VendorModel) => {
-  //   debugger
-  //   const result = await axios.post("https://api.freeprojectapi.com/api/BusBooking/PostBusVendor",obj);
-  //   return result;
-  // }
 
     getAllVendors: async () => {
     debugger
